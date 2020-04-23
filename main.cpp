@@ -20,6 +20,8 @@
 #include <QApplication>
 #include <QCommandLineParser>
 #include <QDebug>
+#include <QLibraryInfo>
+#include <QTranslator>
 
 int main(int argc, char *argv[])
 {
@@ -33,6 +35,14 @@ int main(int argc, char *argv[])
     parser.addPositionalArgument("destination", QCoreApplication::translate("main",
         "Directory in which to create links."));
     parser.process(app);
+
+#ifndef QT_NO_TRANSLATION
+    //qDebug() << "looking for" << QLatin1String("droplinker_") + QLocale().name() << "in" <<     QLibraryInfo::location(QLibraryInfo::TranslationsPath);
+    QTranslator translator;
+    if (translator.load(QLocale(), QLatin1String("droplinker"), QLatin1String("_")))
+        QCoreApplication::installTranslator(&translator);
+#endif
+
     MainWindow w(parser.positionalArguments().count() > 0 ?
                      parser.positionalArguments().first() : QString());
     w.show();

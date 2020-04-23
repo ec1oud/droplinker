@@ -26,7 +26,7 @@ FORMS += \
     mainwindow.ui
 
 TRANSLATIONS += \
-    droplinker_nb_NO.ts
+    translations/droplinker_nb_NO.ts
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

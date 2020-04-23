@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/">
+        <file>resources/link-directory.svg</file>
+        <file>resources/link-relative.svg</file>
+    </qresource>
+</RCC>
